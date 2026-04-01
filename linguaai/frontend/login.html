@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinguaAI — Login</title>
+  <link rel="stylesheet" href="static/css/style.css" />
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+
+<nav>
+  <div class="logo">Lingua<span>AI</span></div>
+  <div class="nav-actions">
+    <button class="btn btn-ghost" onclick="window.location.href='login.html'">Log in</button>
+    <button class="btn btn-primary" onclick="window.location.href='register.html'">Get started</button>
+  </div>
+</nav>
+
+<div class="page" style="position:relative;z-index:1;">
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <div class="auth-header">
+        <h1>Welcome back</h1>
+        <p>Sign in to your LinguaAI account.</p>
+      </div>
+
+      <div id="login-alert" class="alert hidden"></div>
+
+      <div class="form-group">
+        <label class="form-label">Username</label>
+        <input class="form-input" id="login-username" type="text" placeholder="your_name" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input class="form-input" id="login-password" type="password" placeholder="••••••••" />
+      </div>
+
+      <button class="btn btn-primary form-submit" onclick="doLogin()">Sign in →</button>
+
+      <div class="form-switch">
+        No account? <a href="register.html">Create one</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="static/js/api.js"></script>
+<script src="static/js/auth.js"></script>
+<script>
+  function loginSuccess(token, username) {
+    localStorage.setItem('lingua_token', token);
+    localStorage.setItem('lingua_user', username);
+    window.location.href = 'index.html';
+  }
+  if (localStorage.getItem('lingua_token')) window.location.href = 'index.html';
+</script>
+</body>
+</html>
